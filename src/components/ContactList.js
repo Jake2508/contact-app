@@ -9,7 +9,14 @@ const ContactList = (props) => {
         props.getContactId(id);
     };
 
-    const renderContactList = props.contacts.map((contact) => {
+    const contacts = [
+        {
+            id: "1",
+            name: "Jake",
+            email: "Examplee@gmail.com",
+        },
+    ];
+    const renderContactList = contacts.map((contact) => {
         return (
             <ContactCard 
                 contact={contact} 
@@ -21,8 +28,9 @@ const ContactList = (props) => {
 
     // Return parsed contact data formatted
     return (
-        <div class="main">
+        <div class="main" style={{marginTop: "50px"}}>
             <h2>Contact List</h2>
+            <p>Sort by</p>
             <div className="ui celled list">{renderContactList} </div>
         </div>
     );

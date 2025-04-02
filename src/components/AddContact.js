@@ -19,10 +19,9 @@ class AddContact extends React.Component {
 
     render() {
         return (
-            <div className="ui main">
+            <div className="ui main" style={{ marginTop: "50px" }}>
                 <h2>Add Contact</h2>
                 <form className="ui form" onSubmit={this.add}>
-                    <h2>Add Contact</h2>
                     <div className="field">
                         <label>Name</label>
                         <input 
@@ -43,7 +42,11 @@ class AddContact extends React.Component {
                             onChange={ (e) => this.setState({email: e.target.value}) } 
                         />
                         </div>
-                        <button className="ui button blue">Add</button>
+                        <button 
+                            className="ui button blue"
+                            style={{ marginTop: "5px" }}
+                        >Add
+                        </button>
                 </form>
             </div>
         );
