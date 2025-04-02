@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import { v4 as uuidv4 } from 'uuid';
 import './App.css';
 import Header from "./Header"
@@ -38,28 +38,35 @@ function App() {
 
   return (
     <div className="ui container">
-      <Router>
+      <Router>  {/* Wrap Routes with Router */}
         <Header />
-        <Switch>
+        <Routes>  
+          {/* Home Route */}
           <Route 
-            path="/"
-            exact component={() => (
-              <ContactList contacts={contacts} getContactId={removeContactHandler} />
-            )} 
+            path="/" 
+            element={
+            <ContactList 
+              contacts={contacts} 
+              getContactId={removeContactHandler} 
+            />} 
           />
+
+          {/* Add Contact Route */}
           <Route 
-            path="/add"
-            component={() => (
-              <AddContact addContactHandler={addContactHandler}/>
-            )} 
+            path="/add" 
+            element={
+            <AddContact 
+              addContactHandler={addContactHandler} 
+            />}  
           />
-        </Switch>
 
-
-        {/* <AddContact addContactHandler={addContactHandler} />
-        <ContactList contacts={contacts} getContactId={removeContactHandler} /> */}
+          {/* Not Found Page (maybe remove later) */}
+          <Route 
+            path="*" 
+            element={<h2>404 - Page Not Found</h2>} 
+          />
+        </Routes>
       </Router>
-
     </div>
   );
 }
