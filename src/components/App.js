@@ -39,15 +39,23 @@ function App() {
   return (
     <div className="ui container">
       <Router>
-      <Header />
-        <Route 
-          path="/add"
-          component={AddContact} 
-        />
-        <Route 
-          path="/"
-          component={ContactList} 
-        />
+        <Header />
+        <Switch>
+          <Route 
+            path="/"
+            exact component={() => (
+              <ContactList contacts={contacts} getContactId={removeContactHandler} />
+            )} 
+          />
+          <Route 
+            path="/add"
+            component={() => (
+              <AddContact addContactHandler={addContactHandler}/>
+            )} 
+          />
+        </Switch>
+
+
         {/* <AddContact addContactHandler={addContactHandler} />
         <ContactList contacts={contacts} getContactId={removeContactHandler} /> */}
       </Router>
