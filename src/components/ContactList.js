@@ -11,15 +11,22 @@ const ContactList = (props) => {
 
     const renderContactList = props.contacts.map((contact) => {
         return (
-            <ContactCard contact={contact} clickHandler={deleteContactHandler} key={contact.id} ></ContactCard>
+            <ContactCard 
+                contact={contact} 
+                clickHandler={deleteContactHandler} 
+                key={contact.id} 
+            /> 
         );
     })
 
     // Return parsed contact data formatted
-    return <div className="ui celled list">
-        {renderContactList}
-    </div>;
-}
+    return (
+        <div class="main">
+            <h2>Contact List</h2>
+            <div className="ui celled list">{renderContactList} </div>
+        </div>
+    );
+};
 
 
 export default ContactList;
