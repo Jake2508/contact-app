@@ -1,16 +1,22 @@
 import React from 'react'
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation, Link, useNavigate } from 'react-router-dom';
 import user from '../images/user.png';
 
 
-const ContactDetails = (props) => {
+const ConfirmDeleteModal = ({ removeContactHandler}) => {
     const location = useLocation();
+    const navigate = useNavigate();
     const contact = location.state?.contact; 
     
     if (!contact) {
          // Handle edge case - no data
-        return <h2>No contact details available</h2>;
+        return <h2>No contact details available - DELETE MODAL</h2>;
     }
+
+    const handleDelete = () => {
+        removeContactHandler(contact.id);
+        navigate("/");
+    };
 
     return(
         <div className="main">
@@ -26,13 +32,17 @@ const ContactDetails = (props) => {
             <div className="center-div">
                 <Link to="/">
                     <button className="ui button blue center">
-                        Back
+                        Cancel
                     </button>
                 </Link>
+                    <button className="ui button red center" 
+                    onClick={handleDelete}> 
+                        Confirm
+                    </button>
             </div>
         </div>
     );
 };
 
 
-export default ContactDetails;
+export default ConfirmDeleteModal;

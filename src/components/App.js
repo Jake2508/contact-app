@@ -6,6 +6,7 @@ import Header from "./Header"
 import AddContact from "./AddContact"
 import ContactList from "./ContactList"
 import ContactDetails from "./ContactDetails";
+import ConfirmDeleteModal from './ConfirmDeleteModal';
 
 
 function App() {
@@ -48,7 +49,7 @@ function App() {
             element={
             <ContactList 
               contacts={contacts} 
-              getContactId={removeContactHandler} 
+              
             />} 
           />
 
@@ -67,8 +68,16 @@ function App() {
             element={
             <ContactDetails />}  
           />
-        </Routes>
 
+          {/* Are you Sure Modal */}
+          <Route 
+            path="/confirm-delete/:id" 
+            element={
+            <ConfirmDeleteModal
+              removeContactHandler={removeContactHandler} 
+            />}  
+          />
+        </Routes>
       </Router>
     </div>
   );
