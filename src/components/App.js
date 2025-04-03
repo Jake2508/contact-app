@@ -5,6 +5,7 @@ import './App.css';
 import Header from "./Header"
 import AddContact from "./AddContact"
 import ContactList from "./ContactList"
+import ContactDetails from "./ContactDetails";
 
 
 function App() {
@@ -41,7 +42,7 @@ function App() {
       <Router>  {/* Wrap Routes with Router */}
         <Header />
         <Routes>  
-          {/* Home Route */}
+          {/* Home */}
           <Route 
             path="/" 
             element={
@@ -51,7 +52,7 @@ function App() {
             />} 
           />
 
-          {/* Add Contact Route */}
+          {/* Add Contact */}
           <Route 
             path="/add" 
             element={
@@ -60,12 +61,14 @@ function App() {
             />}  
           />
 
-          {/* Not Found Page (maybe remove later) */}
+          {/* Edit Contact */}
           <Route 
-            path="*" 
-            element={<h2>404 - Page Not Found</h2>} 
+            path="/contact/:id" 
+            element={
+            <ContactDetails />}  
           />
         </Routes>
+
       </Router>
     </div>
   );
