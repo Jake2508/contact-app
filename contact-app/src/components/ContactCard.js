@@ -16,7 +16,12 @@ const ContactCard = ({ contact }) => {
             <div>
             <Link to={`/confirm-delete/${id}`} state={{ contact }}>
                 <i className="trash alternate outline icon"
-                style={{color: "red", marginTop: "7px"}}
+                style={{color: "red", marginTop: "7px", marginLeft: '10px'}}
+                ></i>
+            </Link>
+            <Link to={`/edit/${id}`} state={{ contact }}>
+                <i className="edit alternate outline icon"
+                style={{color: "blue", marginTop: "7px"}}
                 ></i>
             </Link>
             </div>

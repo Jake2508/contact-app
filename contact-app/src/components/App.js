@@ -8,6 +8,7 @@ import AddContact from "./AddContact"
 import ContactList from "./ContactList"
 import ContactDetails from "./ContactDetails";
 import ConfirmDeleteModal from './ConfirmDeleteModal';
+import EditContact from './EditContact';
 
 
 function App() {
@@ -31,12 +32,32 @@ function App() {
     getAllContacts();
   }, []);
 
-  const addContactHandler = (contact) => {
-    const newContact = { id: uuidv4(), ...contact };
-    setContacts((prevContacts) => [...prevContacts, newContact]);
+  // Add New Contact
+  const addContactHandler = async (contact) => {
+    const request = {
+      id: uuidv4(), 
+      ...contact 
+    }
+
+    const response = await api.post("/contacts", request);
+    setContacts((prevContacts) => [...prevContacts, response.data]);
   };
 
-  const removeContactHandler = (id) => {
+  // Edit Selected Contact
+  const updateContactHandler = async (updatedContact) => {
+    const response = await api.put(`/contacts/${updatedContact.id}`, updatedContact);
+
+    // Corrected setContacts logic
+    setContacts((prevContacts) =>
+      prevContacts.map((contact) =>
+        contact.id === updatedContact.id ? response.data : contact
+      )
+    );
+  };
+
+  //  Remove Selected Contact
+  const removeContactHandler = async (id) => {
+    await api.delete(`/contacts/${id}`);
     const newContactList = contacts.filter((contact) => {
       return contact.id !== id;
     });
@@ -75,11 +96,16 @@ function App() {
             />}  
           />
 
-          {/* Edit Contact */}
           <Route 
             path="/contact/:id" 
+            element={<ContactDetails />} 
+          />
+
+          {/* Edit Contact */}
+          <Route 
+            path="/edit/:id" 
             element={
-            <ContactDetails />}  
+            < EditContact updateContactHandler={updateContactHandler} />}  
           />
 
           {/* Are you Sure Modal */}
