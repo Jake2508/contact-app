@@ -1,3 +1,14 @@
 {
-    
+    "contacts":[
+        {
+            "id":"7f6c87ce-f706-4957-88ba-7841fb290b0a",
+            "name":"John Smith",
+            "email":"john.smith@gmail.com"
+        },
+        {
+            "id":"ec7613ab-4948-4f23-92d5-fc5d48a57e6c",
+            "name":"Jane Doe",
+            "email":"jane.doe@outlook.com"
+        }
+    ]
 }
