@@ -44,13 +44,13 @@ function App() {
   };
 
   // Edit Selected Contact
-  const updateContactHandler = async (updatedContact) => {
-    const response = await api.put(`/contacts/${updatedContact.id}`, updatedContact);
+  const updateContactHandler = async (contact) => {
+    const response = await api.put(`/contacts/${contact.id}`, contact);
 
     // Corrected setContacts logic
     setContacts((prevContacts) =>
       prevContacts.map((contact) =>
-        contact.id === updatedContact.id ? response.data : contact
+        contact.id === contact.id ? response.data : contact
       )
     );
   };
@@ -65,19 +65,13 @@ function App() {
     setContacts(newContactList);
   };
 
-  useEffect(() => {
-    if(contacts.length > 0) {
-      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(contacts));
-    } 
-  }, [contacts]);
-
 
   return (
     <div className="ui container">
       <Router>  {/* Wrap Routes with Router */}
         <Header />
         <Routes>  
-          {/* Home */}
+          {/* Home - Contact List */}
           <Route 
             path="/" 
             element={
@@ -96,6 +90,7 @@ function App() {
             />}  
           />
 
+          {/* View Contact */}
           <Route 
             path="/contact/:id" 
             element={<ContactDetails />} 
@@ -108,7 +103,7 @@ function App() {
             < EditContact updateContactHandler={updateContactHandler} />}  
           />
 
-          {/* Are you Sure Modal */}
+          {/* Delete Contact */}
           <Route 
             path="/confirm-delete/:id" 
             element={

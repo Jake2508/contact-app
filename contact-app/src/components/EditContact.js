@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, Link, useLocation } from 'react-router-dom';
 
 
 const EditContact = ({ updateContactHandler }) => {
@@ -56,6 +56,11 @@ const EditContact = ({ updateContactHandler }) => {
                         onChange={(e) => setEmail(e.target.value)}  
                     />
                 </div>
+                <Link to="/">
+                    <button className="ui button blue center">
+                        Cancel
+                    </button>
+                </Link>
                 <button className="ui button blue" style={{ marginTop: "5px" }}>
                     Update
                 </button>
