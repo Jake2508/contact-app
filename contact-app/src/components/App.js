@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import { v4 as uuidv4 } from 'uuid';
+import api from '../api/contacts';
 import './App.css';
 import Header from "./Header"
 import AddContact from "./AddContact"
@@ -12,11 +13,23 @@ import ConfirmDeleteModal from './ConfirmDeleteModal';
 function App() {
   const LOCAL_STORAGE_KEY = "contacts";
 
-  // Load contacts from localStorage on initial render
-  const [contacts, setContacts] = useState(() => {
-    const savedContacts = localStorage.getItem(LOCAL_STORAGE_KEY);
-    return savedContacts ? JSON.parse(savedContacts) : [];
-  });
+  // Retrieve Contacts from API
+  const retrieveContacts = async () => {
+    const response = await api.get("/contacts");
+    return response.data;
+  }
+  
+  // Init an empty array
+  const [contacts, setContacts] = useState([]);  
+  useEffect(() => {
+    // Add data from api
+    const getAllContacts = async () => {
+      const allContacts = await retrieveContacts();
+      if (allContacts) setContacts(allContacts);
+    };
+  
+    getAllContacts();
+  }, []);
 
   const addContactHandler = (contact) => {
     const newContact = { id: uuidv4(), ...contact };
