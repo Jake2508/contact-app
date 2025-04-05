@@ -13,15 +13,16 @@ import EditContact from './EditContact';
 
 function App() {
   const LOCAL_STORAGE_KEY = "contacts";
+  const [contacts, setContacts] = useState([]);  
+  const [searchTerm, setSearchTerm] = useState([""]);
+  const [searchResults, setSearchResults] = useState([]);
 
   // Retrieve Contacts from API
   const retrieveContacts = async () => {
     const response = await api.get("/contacts");
     return response.data;
   }
-  
-  // Init an empty array
-  const [contacts, setContacts] = useState([]);  
+
   useEffect(() => {
     // Add data from api
     const getAllContacts = async () => {
@@ -31,6 +32,24 @@ function App() {
   
     getAllContacts();
   }, []);
+
+  // Search Handler
+  const searchHandler = (searchTerm) => {
+    setSearchTerm(searchTerm);
+
+    if(searchTerm !== ""){
+      const newContactList = contacts.filter((contact) => {
+        return Object.values(contact)
+          .join("")
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase());
+      })
+      setSearchResults(newContactList);
+    }
+    else {
+      setSearchResults(contacts);
+    }
+  };
 
   // Add New Contact
   const addContactHandler = async (contact) => {
@@ -47,7 +66,7 @@ function App() {
   const updateContactHandler = async (contact) => {
     const response = await api.put(`/contacts/${contact.id}`, contact);
 
-    // Corrected setContacts logic
+    // Update Selected Contact
     setContacts((prevContacts) =>
       prevContacts.map((contact) =>
         contact.id === contact.id ? response.data : contact
@@ -76,7 +95,9 @@ function App() {
             path="/" 
             element={
             <ContactList 
-              contacts={contacts} 
+              contacts={searchTerm.length < 1 ? contacts : searchResults} 
+              term={searchTerm}
+              searchKeyword={searchHandler}
               
             />} 
           />
