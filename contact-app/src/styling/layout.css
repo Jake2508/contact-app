@@ -1,0 +1,7 @@
+/* layout.css */
+
+.main {
+    background-color: '#f9fafb'; 
+    min-height: '100vh';
+    padding-top: 80px;
+  }

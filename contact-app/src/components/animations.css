@@ -1,0 +1,15 @@
+i.icon {
+    transition: transform 0.2s ease;
+  }
+  i.icon:hover {
+    transform: scale(1.2);
+  }
+
+  .userFields {
+    display: inline-block;
+    transition: transform 0.2s ease;
+  }
+  
+  .userFields:hover {
+    transform: scale(1.02);
+  }

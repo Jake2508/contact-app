@@ -1,6 +1,7 @@
 import React, { useRef } from 'react'
 import { Link } from "react-router-dom";
 import ContactCard from './ContactCard';
+import '../styling/layout.css';
 
 
 const ContactList = (props) => {
@@ -26,15 +27,15 @@ const ContactList = (props) => {
 
     // Return parsed contact data formatted
     return (
-        <div class="main" style={{marginTop: "50px"}}>
+        <div class="main">
             <div style={{ 
                 display: "flex", 
                 justifyContent: "space-between", 
                 alignItems: "center" 
             }}>
-                <h2>Contact List</h2>
+                <h2 className="ui sub header">Contacts</h2>
                 <Link to="/add">
-                    <button className="ui compact button blue">Add Contact</button>
+                    <button className="ui button blue">CREATE NEW CONTACT</button>
                 </Link>
             </div>
             <div className="ui search">
@@ -51,7 +52,6 @@ const ContactList = (props) => {
                 </div>
             </div>
 
-            <p>Sort by: </p>
             <div className="ui celled list">
                 {renderContactList.length > 0
                     ? renderContactList 
