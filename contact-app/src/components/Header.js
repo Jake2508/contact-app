@@ -1,13 +1,27 @@
 import React from 'react'
+import '../styling/layout.css';
+
 
 const Header = () => {
+    const avatarUrl = "https://ui-avatars.com/api/?name=G&background=c1f0f6&color=444";
     return (
-        <div className="ui fixed menu">
-            <div className="ui container center">
-                <h2 className="ui header">Contact Manager</h2>
+        <div className="topbar">
+            <h2 className="logo">
+            Contact<span style={{ color: '#f2711c' }}>Manager</span>
+            </h2>
+            <div className="topbar-right">
+                <span className="user-name">Guest</span>
+                <img
+                    src={avatarUrl}
+                    alt="user"
+                    className="user-avatar"
+                />
+                <i className="bell outline icon notification-icon"></i>
+                <i className="envelope outline icon message-icon"></i>
             </div>
-        </div>
+      </div>
     );
 }
+
 
 export default Header;

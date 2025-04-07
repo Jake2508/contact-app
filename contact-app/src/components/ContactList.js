@@ -4,6 +4,7 @@ import ContactCard from './ContactCard';
 import '../styling/layout.css';
 
 
+
 const ContactList = (props) => {
     const inputEl = useRef("");
 
@@ -38,7 +39,7 @@ const ContactList = (props) => {
                     <button className="ui button blue">CREATE NEW CONTACT</button>
                 </Link>
             </div>
-            <div className="ui search">
+            <div className="ui-input">
                 <div className="ui icon input">
                     <input 
                         ref={inputEl}

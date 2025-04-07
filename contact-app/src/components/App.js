@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import api from '../api/contacts';
 import './App.css';
 import Header from "./Header"
+import SideBar from "./Sidebar"
 import AddContact from "./AddContact"
 import ContactList from "./ContactList"
 import ContactDetails from "./ContactDetails";
@@ -89,6 +90,7 @@ function App() {
     <div className="ui container">
       <Router>  {/* Wrap Routes with Router */}
         <Header />
+        <SideBar />
         <Routes>  
           {/* Home - Contact List */}
           <Route 
