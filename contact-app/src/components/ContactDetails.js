@@ -13,17 +13,17 @@ const ContactDetails = (props) => {
     }
 
     return(
-        <div className="main">
+        <div className="ui container center aligned" style={{ marginTop: '10em' }}>
             <div className="ui card centered">
                 <div className="image">
                     <img src={user} alt="user" />
                 </div>
                 <div className="content">
-                    <div className="header">{contact.name}</div>
-                    <div className="description">{contact.email}</div>
+                    <h2 className="header">{contact.name}</h2>
+                    <a className="description">{contact.email}</a>
                 </div>
             </div>
-            <div className="center-div">
+            <div className="ui section style">
                 <Link to="/">
                     <button className="ui button blue center">
                         Return

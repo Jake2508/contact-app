@@ -19,7 +19,7 @@ const ConfirmDeleteModal = ({ removeContactHandler}) => {
     };
 
     return(
-        <div className="main">
+        <div className="ui container center aligned" style={{ marginTop: '10em' }}>
             <div className="ui card centered">
                 <div className="image">
                     <img src={user} alt="user" />
@@ -30,12 +30,13 @@ const ConfirmDeleteModal = ({ removeContactHandler}) => {
                 </div>
             </div>
             <div className="center-div">
+                <p>Are you sure you want to delete the following contact?</p>
                 <Link to="/">
                     <button className="ui button blue center">
                         Cancel
                     </button>
                 </Link>
-                    <button className="ui button red center" 
+                    <button className="ui button blue center" 
                     onClick={handleDelete}> 
                         Confirm
                     </button>

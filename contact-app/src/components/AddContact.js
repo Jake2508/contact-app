@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 
 const AddContact = (props) => {
@@ -48,6 +48,11 @@ const AddContact = (props) => {
                         onChange={(e) => setEmail(e.target.value)}  
                     />
                 </div>
+                <Link to="/">
+                    <button className="ui button blue center">
+                        Cancel
+                    </button>
+                </Link>
                 <button className="ui button blue" style={{ marginTop: "5px" }}>
                     Add
                 </button>
