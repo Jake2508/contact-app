@@ -13,6 +13,15 @@
     background-color: #f5f6fa;
 }
 
+.main-content {
+  margin-left: 220px; 
+  padding: 2rem;
+  padding-top: 80px; 
+  min-height: 100vh;
+  background-color: #f9fafb;
+  overflow-x: hidden;
+}
+
 
   .ui-input {
     padding: '10px';
@@ -25,7 +34,7 @@
   }
 
   .sidebar {
-    width: 15rem;
+    width: 220px;
     background-color: #fff;
     height: 100vh;
     padding: 2rem 1rem;
@@ -35,7 +44,8 @@
     left: 0;
     display: flex;
     flex-direction: column;
-}
+    z-index: 100;
+  }
 
 .nav-list {
   list-style: none;

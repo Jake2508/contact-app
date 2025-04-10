@@ -91,6 +91,7 @@ function App() {
       <Router>  {/* Wrap Routes with Router */}
         <Header />
         <SideBar />
+        <div className={"main-content"}>
         <Routes>  
           {/* Home - Contact List */}
           <Route 
@@ -135,6 +136,8 @@ function App() {
             />}  
           />
         </Routes>
+        </div>
+        
       </Router>
     </div>
   );
