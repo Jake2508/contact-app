@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import { Link } from "react-router-dom";
 import ContactCard from './ContactCard';
-import '../styling/layout.css';
+import '../styling/styles.css';
 
 
 
