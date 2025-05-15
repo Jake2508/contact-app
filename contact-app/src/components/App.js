@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import { v4 as uuidv4 } from 'uuid';
 import api from '../api/contacts';
@@ -13,7 +13,6 @@ import EditContact from './EditContact';
 
 
 function App() {
-  const LOCAL_STORAGE_KEY = "contacts";
   const [contacts, setContacts] = useState([]);  
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
