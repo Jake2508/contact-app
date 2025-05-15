@@ -1,4 +1,3 @@
-import React from 'react'
 import { useLocation, Link, useNavigate } from 'react-router-dom';
 import user from '../images/user.png';
 
@@ -18,6 +17,7 @@ const ConfirmDeleteModal = ({ removeContactHandler}) => {
         navigate("/");
     };
 
+    
     return(
         <div className="ui container center aligned" style={{ marginTop: '10em' }}>
             <div className="ui card centered">

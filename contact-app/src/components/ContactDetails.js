@@ -1,4 +1,3 @@
-import React from 'react'
 import { useLocation, Link } from 'react-router-dom';
 import user from '../images/user.png';
 
@@ -20,7 +19,9 @@ const ContactDetails = (props) => {
                 </div>
                 <div className="content">
                     <h2 className="header">{contact.name}</h2>
-                    <a className="description">{contact.email}</a>
+                    <a className="description" href={`mailto:${contact.email}`}>
+                        {contact.email}
+                    </a>
                 </div>
             </div>
             <div className="ui section style">

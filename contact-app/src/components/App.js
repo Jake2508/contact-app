@@ -69,7 +69,7 @@ function App() {
     // Update Selected Contact
     setContacts((prevContacts) =>
       prevContacts.map((contact) =>
-        contact.id === contact.id ? response.data : contact
+        contact.id === response.data.id ? response.data : contact
       )
     );
   };
