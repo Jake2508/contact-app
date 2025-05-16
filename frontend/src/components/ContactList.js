@@ -12,7 +12,7 @@ const ContactList = (props) => {
         props.getContactId(id);
     };
 
-    const renderContactList = props.contacts.map((contact) => {
+    const renderContactList = props.contacts?.map((contact) => {
         return (
             <ContactCard 
                 contact={contact} 
@@ -28,7 +28,7 @@ const ContactList = (props) => {
 
     // Return parsed contact data formatted
     return (
-        <div class="main">
+        <div className="main">
             <div style={{ 
                 display: "flex", 
                 justifyContent: "space-between", 
@@ -46,7 +46,7 @@ const ContactList = (props) => {
                         type="text" 
                         placeholder="Search Contacts" 
                         className="prompt"
-                        value={ props.term } 
+                        value={ props.term || ""} 
                         onChange={ getSearchTerm } 
                     />
                     <i className="search icon"></i>
@@ -54,9 +54,13 @@ const ContactList = (props) => {
             </div>
 
             <div className="ui celled list">
-                {renderContactList.length > 0
-                    ? renderContactList 
-                    : "No Contacts available"} 
+                {props.loading ? (
+                    <div className="ui active centered inline loader"></div>
+                ) : (
+                    renderContactList?.length > 0
+                        ? renderContactList 
+                        : "No Contacts available"
+                )}
             </div>
         </div>
     );

@@ -16,10 +16,13 @@ function App() {
   const [contacts, setContacts] = useState([]);  
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const [loading, setLoading] = useState(true)
 
   // Retrieve Contacts from API
   const retrieveContacts = async () => {
     const response = await api.get("/contacts");
+
+    // await new Promise(resolve => setTimeout(resolve, 1500)); - Delay for testing loading spinner
     return response.data;
   }
 
@@ -28,6 +31,7 @@ function App() {
     const getAllContacts = async () => {
       const allContacts = await retrieveContacts();
       if (allContacts) setContacts(allContacts);
+      setLoading(false);
     };
   
     getAllContacts();
@@ -100,7 +104,7 @@ function App() {
               contacts={searchTerm.length < 1 ? contacts : searchResults} 
               term={searchTerm}
               searchKeyword={searchHandler}
-              
+              loading={loading}
             />} 
           />
 
